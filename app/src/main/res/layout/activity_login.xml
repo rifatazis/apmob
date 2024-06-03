@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text"
                 android:hint="username"
-                android:drawableLeft="@drawable/baseline_person_24"
+                android:drawableStart="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
                 android:padding="10dp"
                 android:textColor="@color/black"
@@ -58,7 +58,7 @@
                 android:background="@drawable/edit_text"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:drawableLeft="@drawable/baseline_lock_24"
+                android:drawableStart="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
                 android:padding="10dp"
                 android:textColor="@color/black"
@@ -72,7 +72,7 @@
                 android:layout_marginTop="10dp"
                 android:text="Login"
                 android:textSize="20sp"
-                android:backgroundTint="@color/black"/>
+                android:backgroundTint="#FB3640"/>
 
         </LinearLayout>
 

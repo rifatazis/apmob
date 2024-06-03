@@ -1,5 +1,6 @@
 package com.example.appmobuas.api;
 
+import com.example.appmobuas.model.category.Category;
 import com.example.appmobuas.model.login.Login;
 import com.example.appmobuas.model.product.Product;
 import com.example.appmobuas.model.profil.Profil;
@@ -37,4 +38,7 @@ public interface ApiService {
 
     @GET("product.php")
     Call<Product> fetchProducts();
+
+    @GET("category.php")
+    Call<Category> fetchProduct();
 }

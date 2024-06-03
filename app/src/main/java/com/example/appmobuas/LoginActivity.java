@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                     sessionmanager.loginSession(loginData);
 
                     Snackbar.make(findViewById(android.R.id.content), "Login Succes", Snackbar.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LoginActivity.this, AccountActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
                 }else {

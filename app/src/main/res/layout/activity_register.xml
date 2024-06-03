@@ -32,11 +32,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Register"
+                android:text="Create Account"
                 android:gravity="center"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="34sp"/>
+                android:textSize="32sp"/>
 
             <EditText
                 android:id="@+id/etUser"
@@ -82,10 +82,10 @@
                 android:id="@+id/btnRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="16dp"
                 android:text="Register"
                 android:textSize="20sp"
-                android:backgroundTint="@color/black"/>
+                android:backgroundTint="#FB3640"/>
 
         </LinearLayout>
 
