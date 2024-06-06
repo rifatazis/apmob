@@ -5,10 +5,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,26 +58,27 @@ public class CreateProduct extends AppCompatActivity {
         apiService = retrofit.create(ApiService.class);
 
         binding.btnChooseImage.setOnClickListener(v -> openImageChooser());
-        binding.btnCreateProduct.setOnClickListener(v -> new CreateProductTask().execute());
+        binding.btnCreateProduct.setOnClickListener(v -> createProduct());
     }
+
     private void checkPermissions() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_PERMISSION);
         }
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_CODE_PERMISSION) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Izin diberikan
             } else {
-                // Izin ditolak
                 Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
             }
         }
     }
+
     private void openImageChooser() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/*");
@@ -117,7 +118,7 @@ public class CreateProduct extends AppCompatActivity {
         String productPrice = binding.etProductPrice.getText().toString().trim();
 
         if (productName.isEmpty() || productDetails.isEmpty() || productPrice.isEmpty() || imagePath.isEmpty()) {
-            runOnUiThread(() -> Toast.makeText(this, "Complete all product details", Toast.LENGTH_SHORT).show());
+            Toast.makeText(this, "Complete all product details", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -137,27 +138,19 @@ public class CreateProduct extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     CreateResponse createResponse = response.body();
                     if (!createResponse.isError()) {
-                        runOnUiThread(() -> Toast.makeText(CreateProduct.this, "Product created successfully", Toast.LENGTH_SHORT).show());
+                        Toast.makeText(CreateProduct.this, "Product created successfully", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(CreateProduct.this, CatergoryActivity.class));
                     } else {
-                        runOnUiThread(() -> Toast.makeText(CreateProduct.this, "Failed to create product: " + createResponse.getMessage(), Toast.LENGTH_SHORT).show());
+                        Toast.makeText(CreateProduct.this, "Failed to create product: " + createResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    runOnUiThread(() -> Toast.makeText(CreateProduct.this, "Failed to create product", Toast.LENGTH_SHORT).show());
+                    Toast.makeText(CreateProduct.this, "Failed to create product", Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onFailure(Call<CreateResponse> call, Throwable t) {
-                runOnUiThread(() -> Toast.makeText(CreateProduct.this, "Failed to connect to server", Toast.LENGTH_SHORT).show());
+                Toast.makeText(CreateProduct.this, "Failed to connect to server", Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    private class CreateProductTask extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected Void doInBackground(Void... voids) {
-            createProduct();
-            return null;
-        }
     }
 }
