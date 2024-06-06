@@ -1,5 +1,6 @@
 package com.example.appmobuas;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -33,6 +34,22 @@ public class CatergoryActivity extends AppCompatActivity implements BrandsAdapte
         super.onCreate(savedInstanceState);
         binding = ActivityCatergoryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        binding.btn1.setOnClickListener(v -> {
+            startActivity(new Intent(CatergoryActivity.this,MainActivity.class));
+        });
+        binding.btn2.setOnClickListener(v -> {
+            startActivity(new Intent(CatergoryActivity.this,CatergoryActivity.class));
+        });
+        binding.btn3.setOnClickListener(v -> {
+            startActivity(new Intent(CatergoryActivity.this,CartActivity.class));
+        });
+        binding.btn4.setOnClickListener(v -> {
+            startActivity(new Intent(CatergoryActivity.this, WhistlistActivity.class));
+        });
+        binding.btn5.setOnClickListener(v -> {
+            startActivity(new Intent(CatergoryActivity.this,AccountActivity.class));
+        });
 
         fetchBrands();
         setupRecyclerBrands();

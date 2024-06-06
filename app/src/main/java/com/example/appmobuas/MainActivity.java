@@ -3,7 +3,6 @@ package com.example.appmobuas;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -24,19 +23,25 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.btnNext.setOnClickListener(v -> {
+        binding.btn1.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this,MainActivity.class));
+        });
+        binding.btn2.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this,CatergoryActivity.class));
+        });
+        binding.btn3.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this,CartActivity.class));
+        });
+        binding.btn4.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, WhistlistActivity.class));
+        });
+        binding.btn5.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this,AccountActivity.class));
         });
 
         sessionmanager = new SessionManager(this);
         username = sessionmanager.getUser().get(SessionManager.NAME);
         binding.welcome.setText("Hi,Welcome back "+username);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return super.onCreateOptionsMenu(menu);
     }
 
     @Override

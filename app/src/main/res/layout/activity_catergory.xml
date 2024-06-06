@@ -1,42 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingTop="8dp"
     tools:context=".CatergoryActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleBrands"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/list_item"/>
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CATEGORY"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:layout_margin="6dp"
-        android:padding="5dp"
-        android:textSize="20sp"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleCategory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/list_item"/>
-
-
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="8dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BRANDS"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_margin="6dp"
+                    android:padding="5dp"
+                    android:textSize="20sp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycleBrands"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/list_item"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CATEGORY"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_margin="6dp"
+                    android:padding="5dp"
+                    android:textSize="20sp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycleCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/list_item"/>
+            </LinearLayout>
+
+        </ScrollView>
     </LinearLayout>
 
     <LinearLayout
@@ -66,9 +85,7 @@
             android:layout_gravity="center"
             android:layout_marginEnd="13dp"
             android:background="@color/black"
-            android:src="@drawable/outline_format_list_bulleted_24"
-
-            />
+            android:src="@drawable/outline_format_list_bulleted_24"/>
 
         <ImageView
             android:id="@+id/btn3"
@@ -95,8 +112,8 @@
             android:layout_gravity="center"
             android:layout_marginEnd="13dp"
             android:background="@color/black"
-            android:src="@drawable/account" />
+            android:src="@drawable/outline_person_24" />
 
     </LinearLayout>
 
-</LinearLayout>
+</FrameLayout>

@@ -21,6 +21,22 @@ public class AccountActivity extends AppCompatActivity {
         binding = ActivityAccountBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        binding.btn1.setOnClickListener(v -> {
+            startActivity(new Intent(AccountActivity.this,MainActivity.class));
+        });
+        binding.btn2.setOnClickListener(v -> {
+            startActivity(new Intent(AccountActivity.this,CatergoryActivity.class));
+        });
+        binding.btn3.setOnClickListener(v -> {
+            startActivity(new Intent(AccountActivity.this,CartActivity.class));
+        });
+        binding.btn4.setOnClickListener(v -> {
+            startActivity(new Intent(AccountActivity.this, WhistlistActivity.class));
+        });
+        binding.btn5.setOnClickListener(v -> {
+            startActivity(new Intent(AccountActivity.this,AccountActivity.class));
+        });
+
         sessionmanager = new SessionManager(this);
         if (!sessionmanager.isLogIng()){
             goLogin();

@@ -1,6 +1,7 @@
 package com.example.appmobuas.api;
 
 import com.example.appmobuas.model.brands.Brands;
+import com.example.appmobuas.model.create.CreateResponse;
 import com.example.appmobuas.model.login.Login;
 import com.example.appmobuas.model.products.Products;
 import com.example.appmobuas.model.products.ProductsData;
@@ -8,14 +9,18 @@ import com.example.appmobuas.model.profil.Profil;
 import com.example.appmobuas.model.register.Register;
 import com.example.appmobuas.model.sports.Sports;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -51,15 +56,15 @@ public interface ApiService {
     @GET("products.php")
     Call<Products> fetchProducts(@Query("sport_id") int sportId);
 
-    @FormUrlEncoded
+    @Multipart
     @POST("create.php")
-    Call<Products> createProduct(
-            @Field("product_name") String productName,
-            @Field("product_details") String productDetails,
-            @Field("sport_id") int sportId,
-            @Field("product_price") int productPrice,
-            @Field("product_image") String productImage
+    Call<CreateResponse> createProduct(
+            @Part("product_name") RequestBody productName,
+            @Part("product_details") RequestBody productDetails,
+            @Part("product_price") RequestBody productPrice,
+            @Part MultipartBody.Part productImage
     );
+
 
     @GET("products.php")
     Call<ProductsData> getProductDetails(@Query("sport_id") int sportId);

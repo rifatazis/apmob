@@ -2,30 +2,22 @@ package com.example.appmobuas.model.create;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Create{
-
-	@SerializedName("sport_id")
-	private int sportId;
+public class ProductC {
 
 	@SerializedName("product_image")
 	private String productImage;
 
+	@SerializedName("id")
+	private String id;
+
 	@SerializedName("product_price")
-	private int productPrice;
+	private String productPrice;
 
 	@SerializedName("product_details")
 	private String productDetails;
 
 	@SerializedName("product_name")
 	private String productName;
-
-	public void setSportId(int sportId){
-		this.sportId = sportId;
-	}
-
-	public int getSportId(){
-		return sportId;
-	}
 
 	public void setProductImage(String productImage){
 		this.productImage = productImage;
@@ -35,11 +27,19 @@ public class Create{
 		return productImage;
 	}
 
-	public void setProductPrice(int productPrice){
+	public void setId(String id){
+		this.id = id;
+	}
+
+	public String getId(){
+		return id;
+	}
+
+	public void setProductPrice(String productPrice){
 		this.productPrice = productPrice;
 	}
 
-	public int getProductPrice(){
+	public String getProductPrice(){
 		return productPrice;
 	}
 

@@ -1,10 +1,7 @@
 package com.example.appmobuas;
+
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.util.Base64;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -13,20 +10,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.appmobuas.api.ApiConfig;
 import com.example.appmobuas.api.ApiService;
 import com.example.appmobuas.databinding.ActivityCreateProductBinding;
-import com.example.appmobuas.model.products.Products;
+import com.example.appmobuas.model.create.CreateResponse;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class CreateProduct extends AppCompatActivity {
-    private static final int PICK_IMAGE_REQUEST = 1;
+
     private ActivityCreateProductBinding binding;
-    private String encodedImage;
-    private int sportId;
+    private ApiService apiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,40 +35,48 @@ public class CreateProduct extends AppCompatActivity {
         binding = ActivityCreateProductBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        sportId = getIntent().getIntExtra("sport_id", -1);
-        if (sportId == -1) {
-            Toast.makeText(this, "ID Olahraga tidak valid", Toast.LENGTH_SHORT).show();
-            finish();
-            return;
-        }
+        // Inisialisasi Retrofit
+        Retrofit retrofit = ApiConfig.getConfig();
+        apiService = retrofit.create(ApiService.class);
 
         binding.btnChooseImage.setOnClickListener(v -> openImageChooser());
         binding.btnCreateProduct.setOnClickListener(v -> createProduct());
     }
 
     private void openImageChooser() {
-        Intent intent = new Intent();
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Pilih Gambar"), PICK_IMAGE_REQUEST);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
+
+    private static final int PICK_IMAGE_REQUEST = 1;
+    private byte[] imageData;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Uri uri = data.getData();
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                binding.ivProductImage.setImageBitmap(bitmap);
-                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-                byte[] byteArray = byteArrayOutputStream.toByteArray();
-                encodedImage = Base64.encodeToString(byteArray, Base64.DEFAULT);
+                InputStream inputStream = getContentResolver().openInputStream(data.getData());
+                if (inputStream != null) {
+                    imageData = getBytes(inputStream);
+                    binding.ivProductImage.setImageURI(data.getData());
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    private byte[] getBytes(InputStream inputStream) throws IOException {
+        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+        int bufferSize = 1024;
+        byte[] buffer = new byte[bufferSize];
+        int len;
+        while ((len = inputStream.read(buffer)) != -1) {
+            byteBuffer.write(buffer, 0, len);
+        }
+        return byteBuffer.toByteArray();
     }
 
     private void createProduct() {
@@ -75,27 +84,38 @@ public class CreateProduct extends AppCompatActivity {
         String productDetails = binding.etProductDetails.getText().toString().trim();
         String productPrice = binding.etProductPrice.getText().toString().trim();
 
-        if (productName.isEmpty() || productDetails.isEmpty() || productPrice.isEmpty() || encodedImage == null) {
-            Toast.makeText(this, "Lengkapi semua data produk", Toast.LENGTH_SHORT).show();
+        if (productName.isEmpty() || productDetails.isEmpty() || productPrice.isEmpty() || imageData == null) {
+            Toast.makeText(this, "Complete all product details", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        ApiService apiService = ApiConfig.getConfig().create(ApiService.class);
-        Call<Products> call = apiService.createProduct(productName, productDetails, sportId, Integer.parseInt(productPrice), encodedImage);
-        call.enqueue(new Callback<Products>() {
+        RequestBody nameBody = RequestBody.create(MediaType.parse("text/plain"), productName);
+        RequestBody detailsBody = RequestBody.create(MediaType.parse("text/plain"), productDetails);
+        RequestBody priceBody = RequestBody.create(MediaType.parse("text/plain"), productPrice);
+
+        // Buat request body untuk gambar
+        RequestBody fileBody = RequestBody.create(MediaType.parse("image/*"), imageData);
+        MultipartBody.Part imagePart = MultipartBody.Part.createFormData("product_image", "product_image.jpg", fileBody);
+
+        Call<CreateResponse> call = apiService.createProduct(nameBody, detailsBody, priceBody, imagePart);
+        call.enqueue(new Callback<CreateResponse>() {
             @Override
-            public void onResponse(Call<Products> call, Response<Products> response) {
+            public void onResponse(Call<CreateResponse> call, Response<CreateResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    Toast.makeText(CreateProduct.this, "Produk berhasil dibuat", Toast.LENGTH_SHORT).show();
-                    finish();
+                    CreateResponse productResponse = response.body();
+                    if (!productResponse.isError()) {
+                        Toast.makeText(CreateProduct.this, "Product created successfully", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(CreateProduct.this, "Failed to create product: " + productResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    Toast.makeText(CreateProduct.this, "Gagal membuat produk", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateProduct.this, "Failed to create product", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<Products> call, Throwable t) {
-                Toast.makeText(CreateProduct.this, "Gagal terhubung ke server", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<CreateResponse> call, Throwable t) {
+                Toast.makeText(CreateProduct.this, "Failed to create product: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
