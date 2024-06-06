@@ -62,6 +62,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
             intent.putExtra("product_image", products.getProductImage());
             context.startActivity(intent);
         });
+
     }
 
     @Override
