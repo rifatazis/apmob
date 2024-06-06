@@ -62,6 +62,7 @@ public interface ApiService {
             @Part("product_name") RequestBody productName,
             @Part("product_details") RequestBody productDetails,
             @Part("product_price") RequestBody productPrice,
+            @Part("sport_id") RequestBody sportId,
             @Part MultipartBody.Part productImage
     );
 

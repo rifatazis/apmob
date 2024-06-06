@@ -56,7 +56,9 @@ public class ProductsActivity extends AppCompatActivity {
         }
 
         binding.btnNewProduct.setOnClickListener(v -> {
-            startActivity(new Intent(ProductsActivity.this, CreateProduct.class));
+            Intent intent = new Intent(ProductsActivity.this, CreateProduct.class);
+            intent.putExtra("sport_id", sportId);
+            startActivity(intent);
         });
 
 

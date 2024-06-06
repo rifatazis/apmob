@@ -2,10 +2,10 @@ package com.example.appmobuas.model.create;
 
 import com.google.gson.annotations.SerializedName;
 
-public class CreateResponse {
+public class CreateResponse{
 
 	@SerializedName("product")
-	private ProductC productC;
+	private Product product;
 
 	@SerializedName("error")
 	private boolean error;
@@ -13,12 +13,12 @@ public class CreateResponse {
 	@SerializedName("message")
 	private String message;
 
-	public void setProduct(ProductC productC){
-		this.productC = productC;
+	public void setProduct(Product product){
+		this.product = product;
 	}
 
-	public ProductC getProduct(){
-		return productC;
+	public Product getProduct(){
+		return product;
 	}
 
 	public void setError(boolean error){

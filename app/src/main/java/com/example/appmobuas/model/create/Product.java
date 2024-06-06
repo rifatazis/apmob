@@ -2,7 +2,7 @@ package com.example.appmobuas.model.create;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ProductC {
+public class Product{
 
 	@SerializedName("product_image")
 	private String productImage;
