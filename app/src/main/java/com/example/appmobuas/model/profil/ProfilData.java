@@ -4,47 +4,47 @@ import com.google.gson.annotations.SerializedName;
 
 public class ProfilData {
 
-	@SerializedName("name")
-	private String name;
+    @SerializedName("name")
+    private String name;
 
-	@SerializedName("bio")
-	private String bio;
+    @SerializedName("bio")
+    private String bio;
 
-	@SerializedName("id")
-	private String id;
+    @SerializedName("id")
+    private String id;
 
-	@SerializedName("username")
-	private String username;
+    @SerializedName("username")
+    private String username;
 
-	public void setName(String name){
-		this.name = name;
-	}
+    public void setName(String name){
+        this.name = name;
+    }
 
-	public String getName(){
-		return name;
-	}
+    public String getName(){
+        return name;
+    }
 
-	public void setBio(String bio){
-		this.bio = bio;
-	}
+    public void setBio(String bio){
+        this.bio = bio;
+    }
 
-	public String getBio(){
-		return bio;
-	}
+    public String getBio(){
+        return bio;
+    }
 
-	public void setId(String id){
-		this.id = id;
-	}
+    public void setId(String id){
+        this.id = id;
+    }
 
-	public String getId(){
-		return id;
-	}
+    public String getId(){
+        return id;
+    }
 
-	public void setUsername(String username){
-		this.username = username;
-	}
+    public void setUsername(String username){
+        this.username = username;
+    }
 
-	public String getUsername(){
-		return username;
-	}
+    public String getUsername(){
+        return username;
+    }
 }

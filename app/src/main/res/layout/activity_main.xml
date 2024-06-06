@@ -39,8 +39,10 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher_background"
+        android:src="@drawable/rectangle_143"
         android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        android:padding="12dp"
         android:layout_margin="6dp"/>
 <!--    welcome end-->
 <!--    content-->
@@ -78,7 +80,7 @@
                 <ImageView
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:src="@drawable/outline_person_24"
+                    android:src="@drawable/ellipse_172"
                     />
             </androidx.cardview.widget.CardView>
 
@@ -91,7 +93,7 @@
                 <ImageView
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:src="@drawable/outline_person_24"
+                    android:src="@drawable/ellipse_174"
                     />
             </androidx.cardview.widget.CardView>
 
@@ -104,7 +106,7 @@
                 <ImageView
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:src="@drawable/outline_person_24"
+                    android:src="@drawable/ellipse_171"
                     />
             </androidx.cardview.widget.CardView>
 
@@ -117,7 +119,7 @@
                 <ImageView
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:src="@drawable/outline_person_24"
+                    android:src="@drawable/ellipse_176"
                     />
             </androidx.cardview.widget.CardView>
 
