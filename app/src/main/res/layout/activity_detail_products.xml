@@ -41,20 +41,20 @@
         android:orientation="horizontal"
         android:layout_marginTop="16dp">
 
-        <ImageView
+        <Button
             android:id="@+id/ivUpdateProduct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/baseline_person_pin_24"
             android:padding="16dp"
+            android:text="Update Product"
             android:layout_weight="1"/>
 
-        <ImageView
-            android:id="@+id/ivDeleteProduct"
+        <Button
+            android:id="@+id/btnDeleteProduct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/baseline_person_pin_24"
             android:padding="16dp"
+            android:text="Delete Product"
             android:layout_weight="1"/>
     </LinearLayout>
 </LinearLayout>

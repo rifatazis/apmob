@@ -76,7 +76,7 @@ public class UpdateProducts extends AppCompatActivity {
             updateProductDetails(productId, updatedProduct);
         });
 
-        binding.btnDeleteProduct.setOnClickListener(v -> deleteProduct(productId));
+
     }
 
     private String formatRupiah(int number) {
@@ -107,24 +107,4 @@ public class UpdateProducts extends AppCompatActivity {
         });
     }
 
-    private void deleteProduct(int productId) {
-        ApiService apiService = ApiConfig.getConfig().create(ApiService.class);
-        Call<Void> call = apiService.deleteProduct(productId);
-        call.enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(UpdateProducts.this, "Produk berhasil dihapus", Toast.LENGTH_SHORT).show();
-                    finish();
-                } else {
-                    Toast.makeText(UpdateProducts.this, "Gagal menghapus produk", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(UpdateProducts.this, "Gagal terhubung ke server", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 }

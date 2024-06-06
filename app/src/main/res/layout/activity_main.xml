@@ -73,62 +73,73 @@
                 android:textStyle="bold"
                 android:textSize="20sp" />
 
-            <LinearLayout
+            <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="6dp"
-                android:layout_gravity="center">
+                android:fillViewport="true"
+                android:layout_gravity="center"
+                android:scrollbars="none">
 
-                <androidx.cardview.widget.CardView
+                <LinearLayout
+                    android:id="@+id/brands"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="37dp"
-                    android:layout_marginLeft="18dp"
-                    android:layout_marginRight="15dp">
+                    android:layout_margin="6dp"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
 
-                    <ImageView
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-                        android:src="@drawable/ellipse_172" />
-                </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="37dp"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginRight="15dp">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="37dp"
-                    android:layout_marginRight="15dp">
+                        <ImageView
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:src="@drawable/ellipse_172" />
+                    </androidx.cardview.widget.CardView>
 
-                    <ImageView
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-                        android:src="@drawable/ellipse_174" />
-                </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="37dp"
+                        android:layout_marginRight="15dp">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="37dp"
-                    android:layout_marginRight="15dp">
+                        <ImageView
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:src="@drawable/ellipse_174" />
+                    </androidx.cardview.widget.CardView>
 
-                    <ImageView
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-                        android:src="@drawable/ellipse_171" />
-                </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="37dp"
+                        android:layout_marginRight="15dp">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="37dp"
-                    android:layout_marginRight="15dp">
+                        <ImageView
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:src="@drawable/ellipse_171" />
+                    </androidx.cardview.widget.CardView>
 
-                    <ImageView
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-                        android:src="@drawable/ellipse_176" />
-                </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="37dp"
+                        android:layout_marginRight="15dp">
 
-            </LinearLayout>
+                        <ImageView
+                            android:layout_width="75dp"
+                            android:layout_height="75dp"
+                            android:src="@drawable/ellipse_176" />
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
 
             <LinearLayout
                 android:layout_margin="6dp"

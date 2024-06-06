@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.appmobuas.api.ApiConfig;
@@ -78,7 +77,7 @@ public class CatergoryActivity extends AppCompatActivity implements BrandsAdapte
 
     private void setupRecyclerBrands() {
         brandsAdapter = new BrandsAdapter(this, brands, this);
-        binding.recycleBrands.setLayoutManager(new GridLayoutManager(this, 4));
+        binding.recycleBrands.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         binding.recycleBrands.setAdapter(brandsAdapter);
     }
 

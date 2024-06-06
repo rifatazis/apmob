@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,16 +67,6 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
     @Override
     public int getItemCount() {
         return productList.size();
-    }
-
-    public void updateData(List<ProductsData> data) {
-        if (data != null) {
-            productList.clear();
-            productList.addAll(data);
-            notifyDataSetChanged();
-        } else {
-            Log.e("Adapter Error", "Data is null");
-        }
     }
 
     static class ProductViewHolder extends RecyclerView.ViewHolder {
