@@ -42,7 +42,7 @@
         android:layout_marginTop="16dp">
 
         <Button
-            android:id="@+id/ivUpdateProduct"
+            android:id="@+id/btnUpdateProduct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="16dp"

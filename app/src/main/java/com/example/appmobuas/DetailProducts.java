@@ -1,5 +1,6 @@
 package com.example.appmobuas;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -21,8 +22,9 @@ import retrofit2.Response;
 public class DetailProducts extends AppCompatActivity {
 
     private ActivityDetailProductsBinding binding;
-    private int productId;
+    private int productId ;
 
+    @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +56,11 @@ public class DetailProducts extends AppCompatActivity {
         }
 
         binding.btnDeleteProduct.setOnClickListener(v -> deleteProduct());
+        binding.btnUpdateProduct.setOnClickListener(v -> {
+            Intent updateIntent = new Intent(DetailProducts.this, UpdateProducts.class);
+            updateIntent.putExtra("product_id", productId);
+            startActivity(updateIntent);
+        });
     }
 
     private void deleteProduct() {

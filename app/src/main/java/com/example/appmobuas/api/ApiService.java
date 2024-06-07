@@ -9,13 +9,11 @@ import com.example.appmobuas.model.products.ProductsData;
 import com.example.appmobuas.model.profil.Profil;
 import com.example.appmobuas.model.register.Register;
 import com.example.appmobuas.model.sports.Sports;
-import com.example.appmobuas.model.update.UpdateRequest;
 import com.example.appmobuas.model.update.UpdateResponse;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -70,8 +68,17 @@ public interface ApiService {
     @GET("products.php")
     Call<ProductsData> getProductDetails(@Query("sport_id") int sportId);
 
+
+    @Multipart
     @POST("update.php")
-    Call<UpdateResponse> updateProduct(@Body UpdateRequest request);
+    Call<UpdateResponse> updateProduct(
+            @Part("id_product") RequestBody productId,
+            @Part("product_name") RequestBody productName,
+            @Part("product_details") RequestBody productDetails,
+            @Part("product_price") RequestBody productPrice,
+            @Part MultipartBody.Part product_image
+    );
+
 
     @FormUrlEncoded
     @POST("delete.php")

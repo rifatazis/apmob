@@ -33,10 +33,10 @@ import retrofit2.Retrofit;
 public class CreateProduct extends AppCompatActivity {
 
     private ActivityCreateProductBinding binding;
+    private static final int PICK_IMAGE_REQUEST = 1;
     private ApiService apiService;
     private int sportId; // To store the selected sport ID
     private static final int REQUEST_CODE_PERMISSION = 123;
-    private static final int PICK_IMAGE_REQUEST = 1;
     private String imagePath = "";
 
     @Override
@@ -62,8 +62,7 @@ public class CreateProduct extends AppCompatActivity {
     }
 
     private void checkPermissions() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_CODE_PERMISSION);
         }
     }
