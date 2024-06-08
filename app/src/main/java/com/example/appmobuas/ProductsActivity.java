@@ -3,6 +3,7 @@ package com.example.appmobuas;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,7 +44,7 @@ public class ProductsActivity extends AppCompatActivity {
             startActivity(new Intent(ProductsActivity.this,CartActivity.class));
         });
         binding.btn4.setOnClickListener(v -> {
-            startActivity(new Intent(ProductsActivity.this, WhistlistActivity.class));
+            startActivity(new Intent(ProductsActivity.this, WishtlistActivity.class));
         });
         binding.btn5.setOnClickListener(v -> {
             startActivity(new Intent(ProductsActivity.this,AccountActivity.class));
@@ -76,9 +77,11 @@ public class ProductsActivity extends AppCompatActivity {
     private void fetchProducts(int sportId) {
         ApiService apiService = ApiConfig.getConfig().create(ApiService.class);
         Call<Products> call = apiService.fetchProducts(sportId);
+        binding.progressBar.setVisibility(View.VISIBLE);
         call.enqueue(new Callback<Products>() {
             @Override
             public void onResponse(Call<Products> call, Response<Products> response) {
+                binding.progressBar.setVisibility(View.GONE);
                 if (response.isSuccessful() && response.body() != null) {
                     productList.clear();
                     productList.addAll(response.body().getData());

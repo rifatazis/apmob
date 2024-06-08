@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appmobuas.databinding.ActivityWhistlistBinding;
 
-public class WhistlistActivity extends AppCompatActivity {
+public class WishtlistActivity extends AppCompatActivity {
 
     private ActivityWhistlistBinding binding;
     @Override
@@ -17,20 +17,26 @@ public class WhistlistActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.btn1.setOnClickListener(v -> {
-            startActivity(new Intent(WhistlistActivity.this,MainActivity.class));
+            startActivity(new Intent(WishtlistActivity.this,MainActivity.class));
         });
         binding.btn2.setOnClickListener(v -> {
-            startActivity(new Intent(WhistlistActivity.this,CatergoryActivity.class));
+            startActivity(new Intent(WishtlistActivity.this,CatergoryActivity.class));
         });
         binding.btn3.setOnClickListener(v -> {
-            startActivity(new Intent(WhistlistActivity.this,CartActivity.class));
+            startActivity(new Intent(WishtlistActivity.this,CartActivity.class));
         });
         binding.btn4.setOnClickListener(v -> {
-            startActivity(new Intent(WhistlistActivity.this, WhistlistActivity.class));
+            startActivity(new Intent(WishtlistActivity.this, WishtlistActivity.class));
         });
         binding.btn5.setOnClickListener(v -> {
-            startActivity(new Intent(WhistlistActivity.this,AccountActivity.class));
+            startActivity(new Intent(WishtlistActivity.this,AccountActivity.class));
         });
+
+        wishlist();
+
+    }
+
+    private void wishlist() {
 
     }
 }

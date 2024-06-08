@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.appmobuas.api.ApiConfig;
@@ -25,7 +24,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
     private ActivityProfileBinding binding;
     private SessionManager sessionManager;
-    private static final int PICK_IMAGE_REQUEST = 1;
     private ApiService apiService;
 
     @Override
@@ -38,15 +36,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
         sessionManager = new SessionManager(this);
         apiService = ApiConfig.getConfig().create(ApiService.class);
         loadUserDetails();
-
-        binding.buttonSelectImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("image/*");
-                startActivityForResult(intent, PICK_IMAGE_REQUEST);
-            }
-        });
 
         binding.buttonUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,12 +55,10 @@ public class UpdateProfileActivity extends AppCompatActivity {
         String name = userDetails.get(SessionManager.NAME);
         String bio = userDetails.get(SessionManager.BIO);
 
-        binding.textUsername.setText(username);
-        binding.textName.setText(name);
-        binding.textBio.setText(bio);
+        binding.edittextUsername.setText(username);
+        binding.edittextName.setText(name);
+        binding.edittextBio.setText(bio);
     }
-
-
 
     private void updateProfile(String username, String name, String bio) {
         HashMap<String, String> userDetails = sessionManager.getUser();
@@ -91,9 +78,9 @@ public class UpdateProfileActivity extends AppCompatActivity {
                     if (!profil.isError()) {
                         ProfilData profilData = profil.getData();
 
-                        binding.textUsername.setText(profilData.getUsername());
-                        binding.textName.setText(profilData.getName());
-                        binding.textBio.setText(profilData.getBio());
+                        binding.edittextUsername.setText(profilData.getUsername());
+                        binding.edittextName.setText(profilData.getName());
+                        binding.edittextBio.setText(profilData.getBio());
 
                         sessionManager.updateUser(profilData.getUsername(), profilData.getName(), profilData.getBio());
 
@@ -118,15 +105,5 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 Toast.makeText(UpdateProfileActivity.this, "An error occurred: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            binding.imageProfile.setImageURI(data.getData());
-        }
     }
 }

@@ -39,7 +39,7 @@
             android:name=".DetailProducts"
             android:exported="false" />
         <activity
-            android:name=".WhistlistActivity"
+            android:name=".WishtlistActivity"
             android:exported="false" />
         <activity
             android:name=".AccountActivity"

@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this,CartActivity.class));
         });
         binding.btn4.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, WhistlistActivity.class));
+            startActivity(new Intent(MainActivity.this, WishtlistActivity.class));
         });
         binding.btn5.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this,AccountActivity.class));
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         sessionmanager = new SessionManager(this);
         username = sessionmanager.getUser().get(SessionManager.NAME);
-        binding.welcome.setText("Hi,Welcome back "+username);
+        binding.welcome.setText("Hi,Welcome "+username);
     }
 
     @Override

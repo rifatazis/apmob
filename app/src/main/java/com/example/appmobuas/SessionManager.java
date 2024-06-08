@@ -12,7 +12,6 @@ public class SessionManager {
     private Context context;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
-
     public static final String IS_LOGGED_IN = "islogging";
     public static final String USER_ID = "user_id";
     public static final String USERNAME = "username";

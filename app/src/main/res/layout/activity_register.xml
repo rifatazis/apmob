@@ -12,7 +12,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="13dp"
@@ -35,74 +35,100 @@
                 android:text="Create Account"
                 android:gravity="center"
                 android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="32sp"/>
+                android:textColor="#044171"
+                android:textSize="30sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:padding="6dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="Username Or Email"/>
 
             <EditText
                 android:id="@+id/etUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/edit_text"
+                android:background="@drawable/rectangle_135"
                 android:hint="username"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
                 android:padding="10dp"
                 android:textColor="@color/black"
-                android:layout_marginTop="25dp"
                 android:textSize="18sp"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp"
+
+                android:text="Name"/>
             <EditText
                 android:id="@+id/etName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/edit_text"
+                android:background="@drawable/rectangle_135"
                 android:hint="Name"
                 android:drawableLeft="@drawable/baseline_person_pin_24"
                 android:drawablePadding="8dp"
                 android:padding="10dp"
                 android:textColor="@color/black"
-                android:layout_marginTop="18dp"
                 android:textSize="18sp"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="12dp"
+                android:text="Password"/>
             <EditText
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/edit_text"
+                android:background="@drawable/rectangle_135"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
                 android:padding="10dp"
                 android:textColor="@color/black"
-                android:layout_marginTop="18dp"
                 android:textSize="18sp"/>
 
             <Button
                 android:id="@+id/btnRegister"
-                android:layout_width="match_parent"
+                android:layout_width="180dp"
+                android:layout_gravity="center"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Register"
+                android:layout_marginTop="19dp"
+                android:text="Sign Up"
                 android:textSize="20sp"
                 android:backgroundTint="#FB3640"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="Already have account?"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/linkLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login here"
+                android:layout_gravity="center"
+                android:padding="8dp"
+                android:textColor="#0140DD"/>
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Already hava account?"
-        android:layout_gravity="center"/>
-
-    <TextView
-        android:id="@+id/linkLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login here"
-        android:layout_gravity="center"
-        android:padding="8dp"
-        android:textColor="#0140DD"/>
 </LinearLayout>

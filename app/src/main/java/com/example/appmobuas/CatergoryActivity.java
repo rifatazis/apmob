@@ -45,7 +45,7 @@ public class CatergoryActivity extends AppCompatActivity implements BrandsAdapte
             startActivity(new Intent(CatergoryActivity.this,CartActivity.class));
         });
         binding.btn4.setOnClickListener(v -> {
-            startActivity(new Intent(CatergoryActivity.this, WhistlistActivity.class));
+            startActivity(new Intent(CatergoryActivity.this, WishtlistActivity.class));
         });
         binding.btn5.setOnClickListener(v -> {
             startActivity(new Intent(CatergoryActivity.this,AccountActivity.class));

@@ -22,7 +22,8 @@ import retrofit2.Response;
 public class DetailProducts extends AppCompatActivity {
 
     private ActivityDetailProductsBinding binding;
-    private int productId, sportId ;
+    private int productId, sportId , productPrice;
+    String productName,productDetails, productImage;
 
     @SuppressLint("DefaultLocale")
     @Override
@@ -34,10 +35,10 @@ public class DetailProducts extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent != null) {
             productId = intent.getIntExtra("id_product", 0);
-            String productName = intent.getStringExtra("product_name");
-            int productPrice = intent.getIntExtra("product_price", 0);
-            String productDetails = intent.getStringExtra("product_details");
-            String productImage = intent.getStringExtra("product_image");
+            productName = intent.getStringExtra("product_name");
+            productPrice = intent.getIntExtra("product_price", 0);
+            productDetails = intent.getStringExtra("product_details");
+            productImage = intent.getStringExtra("product_image");
 
             binding.tvProductName.setText(productName);
             binding.tvProductPrice.setText(String.format("Rp %,d", productPrice));
@@ -55,6 +56,21 @@ public class DetailProducts extends AppCompatActivity {
             finish();
         }
 
+        binding.btn1.setOnClickListener(v -> {
+            startActivity(new Intent(DetailProducts.this,MainActivity.class));
+        });
+        binding.btn2.setOnClickListener(v -> {
+            startActivity(new Intent(DetailProducts.this,CatergoryActivity.class));
+        });
+        binding.btn3.setOnClickListener(v -> {
+            startActivity(new Intent(DetailProducts.this,CartActivity.class));
+        });
+        binding.btn4.setOnClickListener(v -> {
+            startActivity(new Intent(DetailProducts.this, WishtlistActivity.class));
+        });
+        binding.btn5.setOnClickListener(v -> {
+            startActivity(new Intent(DetailProducts.this,AccountActivity.class));
+        });
         binding.btnDeleteProduct.setOnClickListener(v -> deleteProduct());
         binding.btnUpdateProduct.setOnClickListener(v -> {
             Intent updateIntent = new Intent(DetailProducts.this, UpdateProducts.class);
@@ -62,6 +78,32 @@ public class DetailProducts extends AppCompatActivity {
             updateIntent.putExtra("sport_id", sportId);
             startActivity(updateIntent);
         });
+        binding.btnAddToCart.setOnClickListener(v -> {
+            addToCart();
+        });
+        binding.btnAddToWishlist.setOnClickListener(v -> {
+            addToWishlist();
+        });
+    }
+
+    private void addToWishlist() {
+        Intent intent = new Intent(this, WishtlistActivity.class);
+        intent.putExtra("id_product", productId);
+        intent.putExtra("product_name", productName);
+        intent.putExtra("product_price", productPrice);
+        intent.putExtra("product_details", productDetails);
+        intent.putExtra("product_image", productImage);
+        startActivity(intent);;
+    }
+
+    private void addToCart() {
+        Intent intent = new Intent(this, CartActivity.class);
+        intent.putExtra("id_product", productId);
+        intent.putExtra("product_name", productName);
+        intent.putExtra("product_price", productPrice);
+        intent.putExtra("product_details", productDetails);
+        intent.putExtra("product_image", productImage);
+        startActivity(intent);;
     }
 
     private void deleteProduct() {

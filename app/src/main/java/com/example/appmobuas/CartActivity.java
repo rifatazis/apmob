@@ -26,7 +26,7 @@ public class CartActivity extends AppCompatActivity {
             startActivity(new Intent(CartActivity.this,CartActivity.class));
         });
         binding.btn4.setOnClickListener(v -> {
-            startActivity(new Intent(CartActivity.this, WhistlistActivity.class));
+            startActivity(new Intent(CartActivity.this, WishtlistActivity.class));
         });
         binding.btn5.setOnClickListener(v -> {
             startActivity(new Intent(CartActivity.this,AccountActivity.class));
