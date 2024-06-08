@@ -2,6 +2,7 @@ package com.example.appmobuas;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,9 +59,11 @@ public class CatergoryActivity extends AppCompatActivity implements BrandsAdapte
     private void fetchBrands() {
         ApiService apiService = ApiConfig.getConfig().create(ApiService.class);
         Call<Brands> call = apiService.fetchBrands();
+        binding.progressBarBrands.setVisibility(View.VISIBLE);
         call.enqueue(new Callback<Brands>() {
             @Override
             public void onResponse(Call<Brands> call, Response<Brands> response) {
+                binding.progressBarBrands.setVisibility(View.GONE);
                 if (response.isSuccessful() && response.body() != null) {
                     brandsAdapter.updateBrands(response.body().getData());
                 } else {

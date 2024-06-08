@@ -32,6 +32,7 @@ public class UpdateProducts extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private Uri selectedImageUri;
     private static final String TAG = "UpdateProducts";
+    private int productId, sportId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,8 @@ public class UpdateProducts extends AppCompatActivity {
         binding = ActivityUpdateProductsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        int productId = getIntent().getIntExtra("product_id", 0);
+        productId = getIntent().getIntExtra("id_product", 0);
+        sportId = getIntent().getIntExtra("sport_id", 0);
         Log.d(TAG, "onCreate: Product ID: " + productId);
 
         binding.chooseImageButton.setOnClickListener(v -> openImagePicker());
@@ -95,7 +97,11 @@ public class UpdateProducts extends AppCompatActivity {
                     Log.d(TAG, "onResponse: Update successful: " + updateResponse.getMessage());
                     if (!updateResponse.isError()) {
                         Toast.makeText(UpdateProducts.this, updateResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(UpdateProducts.this, CatergoryActivity.class));
+                        // Kirim ID produk dan ID olahraga ke halaman DetailProducts
+                        Intent intent = new Intent(UpdateProducts.this, DetailProducts.class);
+                        intent.putExtra("id_product", productId);
+                        intent.putExtra("sport_id", sportId);
+                        startActivity(intent);
                         finish();
                     } else {
                         Toast.makeText(UpdateProducts.this, "Gagal mengupdate produk: " + updateResponse.getMessage(), Toast.LENGTH_SHORT).show();

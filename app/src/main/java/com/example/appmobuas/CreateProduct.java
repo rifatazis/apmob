@@ -35,7 +35,7 @@ public class CreateProduct extends AppCompatActivity {
     private ActivityCreateProductBinding binding;
     private static final int PICK_IMAGE_REQUEST = 1;
     private ApiService apiService;
-    private int sportId; // To store the selected sport ID
+    private int sportId;
     private static final int REQUEST_CODE_PERMISSION = 123;
     private String imagePath = "";
 

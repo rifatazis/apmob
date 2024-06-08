@@ -22,7 +22,7 @@ import retrofit2.Response;
 public class DetailProducts extends AppCompatActivity {
 
     private ActivityDetailProductsBinding binding;
-    private int productId ;
+    private int productId, sportId ;
 
     @SuppressLint("DefaultLocale")
     @Override
@@ -33,7 +33,7 @@ public class DetailProducts extends AppCompatActivity {
 
         Intent intent = getIntent();
         if (intent != null) {
-            productId = intent.getIntExtra("product_id", 0);
+            productId = intent.getIntExtra("id_product", 0);
             String productName = intent.getStringExtra("product_name");
             int productPrice = intent.getIntExtra("product_price", 0);
             String productDetails = intent.getStringExtra("product_details");
@@ -58,7 +58,8 @@ public class DetailProducts extends AppCompatActivity {
         binding.btnDeleteProduct.setOnClickListener(v -> deleteProduct());
         binding.btnUpdateProduct.setOnClickListener(v -> {
             Intent updateIntent = new Intent(DetailProducts.this, UpdateProducts.class);
-            updateIntent.putExtra("product_id", productId);
+            updateIntent.putExtra("id_product", productId);
+            updateIntent.putExtra("sport_id", sportId);
             startActivity(updateIntent);
         });
     }

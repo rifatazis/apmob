@@ -33,6 +33,12 @@
                     android:padding="5dp"
                     android:textSize="20sp"/>
 
+                <ProgressBar
+                    android:id="@+id/progressBarBrands"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"/>
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycleBrands"
                     android:layout_width="match_parent"

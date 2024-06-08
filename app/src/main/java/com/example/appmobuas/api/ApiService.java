@@ -5,7 +5,6 @@ import com.example.appmobuas.model.create.CreateResponse;
 import com.example.appmobuas.model.delete.DefaultResponse;
 import com.example.appmobuas.model.login.Login;
 import com.example.appmobuas.model.products.Products;
-import com.example.appmobuas.model.products.ProductsData;
 import com.example.appmobuas.model.profil.Profil;
 import com.example.appmobuas.model.register.Register;
 import com.example.appmobuas.model.sports.Sports;
@@ -20,6 +19,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiService {
@@ -65,8 +65,8 @@ public interface ApiService {
     );
 
 
-    @GET("products.php")
-    Call<ProductsData> getProductDetails(@Query("sport_id") int sportId);
+    @GET("products/{id_product}")
+    Call<Products> getProductDetails(@Path("id_product") int productId);
 
 
     @Multipart
@@ -79,11 +79,20 @@ public interface ApiService {
             @Part MultipartBody.Part product_image
     );
 
+    @FormUrlEncoded
+    @POST("update.php")
+    Call<UpdateResponse> updateWithoutImage(
+            @Field("id_product") RequestBody idProduct,
+            @Field("product_name") RequestBody productName,
+            @Field("product_details") RequestBody productDetails,
+            @Field("product_price") RequestBody productPrice
+    );
+
 
     @FormUrlEncoded
     @POST("delete.php")
     Call<DefaultResponse> deleteProduct(
-            @Field("product_id") int productId
+            @Field("id_product") int productId
     );
 
 }
