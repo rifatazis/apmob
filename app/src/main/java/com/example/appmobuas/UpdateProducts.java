@@ -110,7 +110,6 @@ public class UpdateProducts extends AppCompatActivity {
                     Log.d(TAG, "onResponse: Update successful: " + updateResponse.getMessage());
                     if (!updateResponse.isError()) {
                         Toast.makeText(UpdateProducts.this, updateResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                        // Kirim ID produk dan ID olahraga ke halaman DetailProducts
                         Intent intent = new Intent(UpdateProducts.this, DetailProducts.class);
                         intent.putExtra("id_product", productId);
                         intent.putExtra("sport_id", sportId);

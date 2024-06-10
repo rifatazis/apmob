@@ -10,6 +10,17 @@ public class SportData {
 	@SerializedName("id")
 	private int id;
 
+	@SerializedName("image")
+	private String image;
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	@SerializedName("brand_id")
 	private int brandId;
 
