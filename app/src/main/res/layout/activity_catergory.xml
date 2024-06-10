@@ -68,6 +68,13 @@
                     android:padding="5dp"
                     android:textSize="20sp"/>
 
+                <ProgressBar
+                    android:id="@+id/progressBarSports"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:visibility="gone" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycleCategory"
                     android:layout_width="match_parent"

@@ -1,6 +1,7 @@
 package com.example.appmobuas.model.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appmobuas.DetailProducts;
 import com.example.appmobuas.R;
 import com.example.appmobuas.model.wishlist.WishlistItem;
 
@@ -54,6 +56,10 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.ViewHo
         } else {
             holder.ivProductImage.setImageResource(R.drawable.baseline_error_24);
         }
+        holder.itemView.setOnClickListener(v->{
+            Intent intent = new Intent(context, DetailProducts.class);
+            context.startActivity(intent);
+        });
     }
 
     @Override

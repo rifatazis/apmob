@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="13dp"
@@ -12,8 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="6dp">
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/product_imageWish"
@@ -26,8 +25,8 @@
             android:src="@drawable/ic_launcher_background" />
 
         <LinearLayout
-            android:layout_width="120dp"
-            android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
             android:orientation="vertical">
@@ -55,15 +54,33 @@
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/choose_image_button"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/border"
+                    android:gravity="center"
+                    android:text="BUY"
+                    android:textColor="#EC0810" />
+
+                <ImageView
+                    android:id="@+id/btnRemoveWish"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="6dp"
+                    android:src="@drawable/remove"
+                    android:text="remove" />
+
+            </LinearLayout>
         </LinearLayout>
 
-            <ImageView
-                android:id="@+id/btnRemoveWish"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="6dp"
-                android:src="@drawable/remove"
-                android:text="remove" />
 
     </LinearLayout>
 

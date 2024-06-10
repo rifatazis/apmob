@@ -88,6 +88,7 @@ public class CatergoryActivity extends AppCompatActivity implements BrandsAdapte
             @Override
             public void onResponse(Call<Sports> call, Response<Sports> response) {
                 if (response.isSuccessful() && response.body() != null) {
+                    binding.progressBarSports.setVisibility(View.GONE);
                     sportsAdapter.updateData(response.body().getData());
                 } else {
                     Toast.makeText(CatergoryActivity.this, "Gagal mengambil data kategori", Toast.LENGTH_SHORT).show();
@@ -96,6 +97,7 @@ public class CatergoryActivity extends AppCompatActivity implements BrandsAdapte
 
             @Override
             public void onFailure(Call<Sports> call, Throwable t) {
+                binding.progressBarSports.setVisibility(View.GONE);
                 Toast.makeText(CatergoryActivity.this, "Server tidak merespon", Toast.LENGTH_SHORT).show();
             }
         });
@@ -109,6 +111,7 @@ public class CatergoryActivity extends AppCompatActivity implements BrandsAdapte
 
     @Override
     public void onBrandClick(int brandId) {
+        binding.progressBarSports.setVisibility(View.VISIBLE);
         fetchSportsByBrand(brandId);
     }
 }
