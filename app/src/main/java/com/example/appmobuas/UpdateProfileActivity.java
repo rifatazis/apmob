@@ -33,6 +33,19 @@ public class UpdateProfileActivity extends AppCompatActivity {
         binding = ActivityProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        binding.btn1.setOnClickListener(v -> {
+            startActivity(new Intent(UpdateProfileActivity.this,MainActivity.class));
+        });
+        binding.btn2.setOnClickListener(v -> {
+            startActivity(new Intent(UpdateProfileActivity.this,CatergoryActivity.class));
+        });
+        binding.btn4.setOnClickListener(v -> {
+            startActivity(new Intent(UpdateProfileActivity.this, WishtlistActivity.class));
+        });
+        binding.btn5.setOnClickListener(v -> {
+            startActivity(new Intent(UpdateProfileActivity.this,AccountActivity.class));
+        });
+
         sessionManager = new SessionManager(this);
         apiService = ApiConfig.getConfig().create(ApiService.class);
         loadUserDetails();

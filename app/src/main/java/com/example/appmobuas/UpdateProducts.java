@@ -44,6 +44,19 @@ public class UpdateProducts extends AppCompatActivity {
         sportId = getIntent().getIntExtra("sport_id", 0);
         Log.d(TAG, "onCreate: Product ID: " + productId);
 
+        binding.btn1.setOnClickListener(v -> {
+            startActivity(new Intent(UpdateProducts.this,MainActivity.class));
+        });
+        binding.btn2.setOnClickListener(v -> {
+            startActivity(new Intent(UpdateProducts.this,CatergoryActivity.class));
+        });
+        binding.btn4.setOnClickListener(v -> {
+            startActivity(new Intent(UpdateProducts.this, WishtlistActivity.class));
+        });
+        binding.btn5.setOnClickListener(v -> {
+            startActivity(new Intent(UpdateProducts.this,AccountActivity.class));
+        });
+
         binding.chooseImageButton.setOnClickListener(v -> openImagePicker());
         binding.updateButton.setOnClickListener(v -> updateProduct(productId));
     }

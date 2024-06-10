@@ -79,14 +79,6 @@ public interface ApiService {
             @Part MultipartBody.Part product_image
     );
 
-    @FormUrlEncoded
-    @POST("update.php")
-    Call<UpdateResponse> updateWithoutImage(
-            @Field("id_product") RequestBody idProduct,
-            @Field("product_name") RequestBody productName,
-            @Field("product_details") RequestBody productDetails,
-            @Field("product_price") RequestBody productPrice
-    );
 
 
     @FormUrlEncoded

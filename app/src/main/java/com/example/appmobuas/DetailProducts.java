@@ -14,6 +14,9 @@ import com.example.appmobuas.api.ApiConfig;
 import com.example.appmobuas.api.ApiService;
 import com.example.appmobuas.databinding.ActivityDetailProductsBinding;
 import com.example.appmobuas.model.delete.DefaultResponse;
+import com.example.appmobuas.model.wishlist.WishlistItem;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,6 +27,8 @@ public class DetailProducts extends AppCompatActivity {
     private ActivityDetailProductsBinding binding;
     private int productId, sportId , productPrice;
     String productName,productDetails, productImage;
+
+    public static ArrayList<WishlistItem> wishlist = new ArrayList<>();
 
     @SuppressLint("DefaultLocale")
     @Override
@@ -62,14 +67,14 @@ public class DetailProducts extends AppCompatActivity {
         binding.btn2.setOnClickListener(v -> {
             startActivity(new Intent(DetailProducts.this,CatergoryActivity.class));
         });
-        binding.btn3.setOnClickListener(v -> {
-            startActivity(new Intent(DetailProducts.this,CartActivity.class));
-        });
         binding.btn4.setOnClickListener(v -> {
             startActivity(new Intent(DetailProducts.this, WishtlistActivity.class));
         });
         binding.btn5.setOnClickListener(v -> {
             startActivity(new Intent(DetailProducts.this,AccountActivity.class));
+        });
+        binding.btnBuy.setOnClickListener(v ->{
+            Toast.makeText(this, "The product was successfully purchased", Toast.LENGTH_SHORT).show();
         });
         binding.btnDeleteProduct.setOnClickListener(v -> deleteProduct());
         binding.btnUpdateProduct.setOnClickListener(v -> {
@@ -78,32 +83,15 @@ public class DetailProducts extends AppCompatActivity {
             updateIntent.putExtra("sport_id", sportId);
             startActivity(updateIntent);
         });
-        binding.btnAddToCart.setOnClickListener(v -> {
-            addToCart();
-        });
-        binding.btnAddToWishlist.setOnClickListener(v -> {
-            addToWishlist();
-        });
+        binding.btnAddToWishlist.setOnClickListener(v -> addToWishlist());
     }
-
     private void addToWishlist() {
-        Intent intent = new Intent(this, WishtlistActivity.class);
-        intent.putExtra("id_product", productId);
-        intent.putExtra("product_name", productName);
-        intent.putExtra("product_price", productPrice);
-        intent.putExtra("product_details", productDetails);
-        intent.putExtra("product_image", productImage);
-        startActivity(intent);;
-    }
+        WishlistItem wishlistItem = new WishlistItem(productId, productName, productPrice, productImage);
+        wishlist.add(wishlistItem);
 
-    private void addToCart() {
-        Intent intent = new Intent(this, CartActivity.class);
-        intent.putExtra("id_product", productId);
-        intent.putExtra("product_name", productName);
-        intent.putExtra("product_price", productPrice);
-        intent.putExtra("product_details", productDetails);
-        intent.putExtra("product_image", productImage);
-        startActivity(intent);;
+        Toast.makeText(this, "Produk ditambahkan ke wishlist", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(DetailProducts.this, WishtlistActivity.class);
+        startActivity(intent);
     }
 
     private void deleteProduct() {

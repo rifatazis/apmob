@@ -29,19 +29,27 @@ public class MainActivity extends AppCompatActivity {
         binding.btn2.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this,CatergoryActivity.class));
         });
-        binding.btn3.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this,CartActivity.class));
-        });
         binding.btn4.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, WishtlistActivity.class));
         });
         binding.btn5.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this,AccountActivity.class));
         });
-
         sessionmanager = new SessionManager(this);
         username = sessionmanager.getUser().get(SessionManager.NAME);
         binding.welcome.setText("Hi,Welcome "+username);
+        binding.brand1.setOnClickListener(v->{
+            startActivity(new Intent(MainActivity.this,CatergoryActivity.class));
+        });
+        binding.brand2.setOnClickListener(v->{
+            startActivity(new Intent(MainActivity.this,CatergoryActivity.class));
+        });
+        binding.brand3.setOnClickListener(v->{
+            startActivity(new Intent(MainActivity.this,CatergoryActivity.class));
+        });
+        binding.brand4.setOnClickListener(v->{
+            startActivity(new Intent(MainActivity.this,CatergoryActivity.class));
+        });
     }
 
     @Override

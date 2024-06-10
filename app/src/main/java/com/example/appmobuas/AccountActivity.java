@@ -45,9 +45,6 @@ public class AccountActivity extends AppCompatActivity {
         binding.btn2.setOnClickListener(v -> {
             startActivity(new Intent(AccountActivity.this, CatergoryActivity.class));
         });
-        binding.btn3.setOnClickListener(v -> {
-            startActivity(new Intent(AccountActivity.this, CartActivity.class));
-        });
         binding.btn4.setOnClickListener(v -> {
             startActivity(new Intent(AccountActivity.this, WishtlistActivity.class));
         });
@@ -61,6 +58,7 @@ public class AccountActivity extends AppCompatActivity {
         });
 
         binding.logout.setOnClickListener(v->{
+            sessionManager.logout();
             goLogin();
         });
     }

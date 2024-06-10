@@ -11,7 +11,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiConfig {
-    private static final String BASE_URL = "http://10.0.30.16/appmobs/";
+    private static final String BASE_URL = "http://10.0.30.12/appmobs/";
     private static Retrofit retrofit;
 
     public static Retrofit getConfig() {
@@ -21,8 +21,8 @@ public class ApiConfig {
 
             OkHttpClient client = new OkHttpClient.Builder()
                     .addInterceptor(loggingInterceptor)
-                    .connectTimeout(30, TimeUnit.SECONDS) // Waktu tunggu koneksi
-                    .readTimeout(30, TimeUnit.SECONDS)    // Waktu tunggu pembacaan
+                    .connectTimeout(30, TimeUnit.SECONDS)
+                    .readTimeout(30, TimeUnit.SECONDS)
                     .writeTimeout(30, TimeUnit.SECONDS)
                     .build();
 

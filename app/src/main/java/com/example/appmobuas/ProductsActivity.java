@@ -40,9 +40,6 @@ public class ProductsActivity extends AppCompatActivity {
         binding.btn2.setOnClickListener(v -> {
             startActivity(new Intent(ProductsActivity.this,CatergoryActivity.class));
         });
-        binding.btn3.setOnClickListener(v -> {
-            startActivity(new Intent(ProductsActivity.this,CartActivity.class));
-        });
         binding.btn4.setOnClickListener(v -> {
             startActivity(new Intent(ProductsActivity.this, WishtlistActivity.class));
         });

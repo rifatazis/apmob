@@ -57,6 +57,18 @@ public class CreateProduct extends AppCompatActivity {
         Retrofit retrofit = ApiConfig.getConfig();
         apiService = retrofit.create(ApiService.class);
 
+        binding.btn1.setOnClickListener(v -> {
+            startActivity(new Intent(CreateProduct.this,MainActivity.class));
+        });
+        binding.btn2.setOnClickListener(v -> {
+            startActivity(new Intent(CreateProduct.this,CatergoryActivity.class));
+        });
+        binding.btn4.setOnClickListener(v -> {
+            startActivity(new Intent(CreateProduct.this, WishtlistActivity.class));
+        });
+        binding.btn5.setOnClickListener(v -> {
+            startActivity(new Intent(CreateProduct.this,AccountActivity.class));
+        });
         binding.btnChooseImage.setOnClickListener(v -> openImageChooser());
         binding.btnCreateProduct.setOnClickListener(v -> createProduct());
     }
